@@ -10,10 +10,6 @@ Sistema avançado de gerenciamento de honeypots distribuídos em servidores, com
 - **Containerização**: Docker e Docker Compose para fácil implantação
 - **Banco de Dados**: H2 para armazenamento de logs de ataques
 
-## 🏗️ Arquitetura
-
-![Arquitetura](https://i.imgur.com/mVqCXsX.png)
-
 O sistema é composto por:
 
 - **Agentes Honeypot**: Simulam vários serviços (SSH, HTTP, FTP, SMTP, MySQL)
@@ -29,7 +25,7 @@ O sistema é composto por:
 - **SMTP** (porta 25)
 - **MySQL** (porta 3306)
 
-## 🚀 Como executar
+## Como executar
 
 ### Execução manual (desenvolvimento)
 
@@ -71,7 +67,7 @@ O sistema estará disponível em:
 - **Backend API**: http://localhost:8081/api/attacks
 - **Console H2**: http://localhost:8081/h2-console
 
-## 📱 Como testar
+## Como testar
 
 1. Inicie todos os componentes (backend, agente e frontend)
 2. Acesse o frontend em http://localhost:3000
@@ -134,17 +130,3 @@ honeypot-manager/
 - **Frontend**: React, Material-UI, Axios, SockJS 
 - **Agente**: Java 11, Socket Programming, Multi-threading
 - **DevOps**: Docker, Docker Compose
-
-## 📈 Valor para Portfólio
-
-Este projeto demonstra diversas habilidades técnicas:
-- Desenvolvimento full-stack com Java e React
-- Programação concorrente e multi-threading
-- Comunicação em tempo real com WebSockets
-- Arquitetura de sistemas distribuídos
-- Implementação de honeypots para cibersegurança
-- Containerização com Docker
-
-## 📝 Licença
-
-Este projeto está licenciado sob a licença MIT.

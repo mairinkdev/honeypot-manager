@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    container_name: honeypot-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/honeypotdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+
+  agent:
+    build: ./agent
+    container_name: honeypot-agent
+    # Modo host para os honeypots funcionarem corretamente
+    network_mode: "host"
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://localhost:8080/api/attacks
+
+  database:
+    image: postgres:13
+    container_name: honeypot-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=honeypotdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  frontend:
+    build: ./frontend
+    container_name: honeypot-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data: 
